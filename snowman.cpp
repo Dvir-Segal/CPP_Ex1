@@ -1,14 +1,20 @@
 #include "snowman.hpp"
 #include <string>
 #include <stdexcept>
+#include <array>
 using namespace std;
 
 namespace ariel{
-    std:: string snowman(int input){
+        string snowman(int input){
         const int numDigit = 8;
         const int devider = 10;
         const int minL = 0;
         const int maxL = 5;
+
+        const int rigthArm = 5;
+        const int torso = 6;
+        const int bottom = 7;
+
     if (input<=0){
         throw out_of_range("Invalid input");
         return " ";
@@ -28,7 +34,7 @@ namespace ariel{
         return " "; 
     }
       
-
+//All the body parts
 const string H1U = " ";
 const string H1D = " _===_";
 const string H2U = "  ___";
@@ -81,12 +87,13 @@ const string B2 = " (\" \")";
 const string B3 = " (___)";
 const string B4 = " (   )";
 
-int arr[numDigit];
+array <int, numDigit> arr = {};
 for (int i = numDigit-1; i >= 0; i--){
-    arr[i] = input%devider;
+    arr.at(i) = input%devider;
     input/=devider;
 }
 
+//Hat
 string output = "\n";
 switch (arr[0]){
     case 1:
@@ -103,6 +110,7 @@ switch (arr[0]){
         break;
 }
 
+//The face: left eye, nose, right eye
 string face = "(";
 switch (arr[2]){
     case 1:
@@ -149,6 +157,7 @@ switch (arr[3]){
         break;
 }
 
+//Upper left arm
 switch (arr[4]){
     case 1:
         output.append(X1U+face);
@@ -164,7 +173,8 @@ switch (arr[4]){
         break;
 }
 
-switch (arr[5]){
+//Upper right arm
+switch (arr[rigthArm]){
     case 1:
         output.append(Y1U+"\n");
         break;
@@ -179,6 +189,7 @@ switch (arr[5]){
         break;
 }
 
+//Bottom left arm
 switch (arr[4]){
     case 1:
         output.append(X1D);
@@ -194,7 +205,9 @@ switch (arr[4]){
         break;
 }
 
-switch (arr[6]){
+
+//Torso
+switch (arr[torso]){
     case 1:
         output.append(T1);
         break;
@@ -209,7 +222,8 @@ switch (arr[6]){
         break;
 }
 
-switch (arr[5]){
+//Bottom right arm
+switch (arr[rigthArm]){
     case 1:
         output.append(Y1D+"\n");
         break;
@@ -224,7 +238,8 @@ switch (arr[5]){
         break;
 }
 
-switch (arr[7]){
+//Bottom
+switch (arr[bottom]){
     case 1:
         output.append(B1);
         break;
