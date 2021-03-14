@@ -16,7 +16,7 @@ namespace ariel{
         const int bottom = 7;
 
     if (input<=0){
-        throw out_of_range("Invalid input");
+        throw out_of_range("Invalid input\n");
         return " ";
     }
     int num = input;
@@ -25,12 +25,12 @@ namespace ariel{
             num/=devider;
         }
         else{
-           throw out_of_range("Invalid input");
+           throw out_of_range("Invalid input\n");
            return " "; 
         }
     }
     if (num > minL){
-        throw out_of_range("Invalid input");
+        throw out_of_range("Invalid input\n");
         return " "; 
     }
       
